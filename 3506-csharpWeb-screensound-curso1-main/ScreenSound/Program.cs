@@ -1,5 +1,21 @@
-﻿using ScreenSound.Menus;
+﻿using ScreenSound.Banco;
+using ScreenSound.Menus;
 using ScreenSound.Modelos;
+
+try
+{
+    // Adição do "using" para determinar que a implementação da conexão
+    // será encerrada após execução do escopo de onde ela foi implementada
+    using var connection = new Connection().ObterConexao();
+    connection.Open();
+    Console.WriteLine(connection.State);
+} 
+catch (Exception ex)
+{
+    Console.WriteLine(ex.Message);
+}
+
+return;
 
 Artista ira = new Artista("Ira!", "Banda Ira!");
 Artista beatles = new("The Beatles", "Banda The Beatles");
