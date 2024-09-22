@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ScreenSound.Banco
 {
-    internal class ArtistaDAL
+    internal class ArtistaDAL: DAL<Artista>
     {
 
         private readonly ScreenSoundContext context;
@@ -18,12 +18,12 @@ namespace ScreenSound.Banco
             this.context = context;
         }
 
-        public IEnumerable<Artista> Listar()
+        public override IEnumerable<Artista> Listar()
         {
             return context.Artistas.ToList();
         }
 
-        public void Adicionar(Artista artista)
+        public override void Adicionar(Artista artista)
         {
             // Adição do "using" para determinar que a implementação da conexão
             // será encerrada após execução do escopo de onde ela foi implementada
@@ -31,13 +31,13 @@ namespace ScreenSound.Banco
             context.SaveChanges();
         }
 
-        public void Atualizar(Artista artista)
+        public override void Atualizar(Artista artista)
         {
             context.Artistas.Update(artista);
             context.SaveChanges();
         }
 
-        public void Deletar(Artista artista)
+        public override void Deletar(Artista artista)
         {
             context.Artistas.Remove(artista);
             context.SaveChanges();
