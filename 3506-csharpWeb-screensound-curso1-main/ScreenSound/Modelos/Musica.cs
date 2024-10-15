@@ -12,6 +12,8 @@ internal class Musica
 
     public int? AnoLancamento { get; set; }
 
+    public Artista? Artista { get; set; }
+
     public void ExibirFichaTecnica()
     {
         Console.WriteLine($"Nome: {Nome}");
